@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+    <title>Job Scrapper</title>
+  </head>
+  <body>
+    <!-- Python과의 문법 차이를 확인 -->
+    <main class="container">
+      <header>
+        <h1>Search result for "{{keyword}}"</h1>
+        <a href="/export?keyword={{keyword}}" target="_blank">Export File</a>
+      </header>
+      <figure>
+        <table role="grid">
+          <thead>
+            <tr>
+              <td>Title</td>
+              <td>Company</td>
+              <td>Region</td>
+              <td>Link</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for job in jobs %}
+            <tr>
+              <td>{{job.title}}</td>
+              <td>{{job.company}}</td>
+              <td>{{job.region}}</td>
+              <td><a href="{{job.link}}">Click Here &rarr;</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </figure>
+    </main>
+  </body>
+</html>
